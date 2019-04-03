@@ -58,3 +58,4 @@ group :test do
 end
 
 gem 'google-cloud-spanner'
+gem 'dotenv-rails', groups: [:development, :test]
