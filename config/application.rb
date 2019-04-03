@@ -7,7 +7,7 @@ require "active_model"
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
-require "action_cable/engine" # Only for Rails >= 5.0
+# require "action_cable/engine" # Only for Rails >= 5.0
 require "active_storage/engine" # Only for Rails >= 5.2
 # require "action_mailbox/engine" # Only for Rails >= 6.0
 # require "action_text/engine" # Only for Rails >= 6.0
