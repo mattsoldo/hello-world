@@ -3,3 +3,5 @@ instance_class: F4
 entrypoint: bundle exec rails server -e production
 vpc_access_connector:
   name: "projects/watches-235404/locations/us-central1/connectors/default-vpc-access"
+env_variables:
+  REDIS_IP: "redis://10.0.0.4:6379/0"

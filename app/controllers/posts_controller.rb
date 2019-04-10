@@ -4,11 +4,8 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    $spanner_client.transaction do |transaction|
-      @results = transaction.execute "SELECT 1"
-    end
-
-      @posts = Post.all
+    Rails.cache.write('rand', rand(1000))
+    @posts = Post.all
   end
 
   # GET /posts/1
@@ -73,6 +70,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:message, :url, :id)
+      params.require(:post).permit(:message, :url, :id, :image)
     end
 end

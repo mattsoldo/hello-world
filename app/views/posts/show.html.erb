@@ -9,6 +9,7 @@
   <strong>Url:</strong>
   <%= @post.url %>
 </p>
+<%= image_tag(@post.image_url) if @post.image_data? %>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

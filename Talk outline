@@ -1,0 +1,120 @@
+# App Engine
+
+# Ruby
+
+Ruby Gem + Google Cloud = :-)
+
+### About Me
+
+1. Heroku
+2. Bad Programmer
+
+
+### What We'll cover
+
+1. Google Cloud's Serverless Ruby OPTIONS
+2. Running a Rails + Postgres + Redis app
+3. Running a magic globe spanning app with Rails + Spanner
+
+## Intro
+
+### Why Ruby?
+
+1. Readable
+2. Great for modeling business logic
+3. Mature frameworks and ecosystem
+
+### Why not Ruby?
+
+1. Usage in decline.
+1a. Risks in hiring?
+
+## Part 1: The Options
+
+
+### Before Today
+:-( Grab a server and fill your boots.
+App Engine Flex
+
+### Starting Today
+1. Ruby on App Engine Standard
+2. Ruby on Cloud Run
+3. Ruby on Cloud Run on GKE
+<< show hexes >>
+
+### Which should I use?
+
+<< hex >> GAE Standard: VPC Access (== redis). Battle hardened product.
+<< hex >> Cloud Run: Containers - pick your system libraries. No VPC yet.
+<< hex >> Cloud Run on GKE: Direct VPC access. But you need to deal wit Kubernetes -/+ use this if you have an enterprise GKE strategy.
+
+GAE + run == same underlying infrastructure.
+
+## Part 2
+
+Let's start with the basics
+
+Show hexes
+
+Create a postgres instance
+Create a Redis instance
+Create a VPC connector
+Create a GCS bucket?
+
+Configure Rails to use them
+
+
+## Part 3: Now for something completely different
+
+* We want the cloud to be this: [globe with full cloud cover]
+* But it usually ends up being this: [cloud over road runner]
+
+### Why is this hard
+Show a sandwich from the side with a thin slice of meet.
+* Compute is the ham. It's the heart of it, but its actually the easy part.
+* Storage is hard.
+* Networking is hard.
+But there are services that make them easy.
+
+### Architecture diagram
+### Prove it works. VPN to different locations.
+### Resilience. Turn off a region. It still works.
+### Load Test. Is it fast???
+
+        Cloudflare
+            |
+            |
+            |
+  --------------------
+  |         |        |
+  |         |        |
+GCP US   GCP EU   GCP AS
+  |         |        |
+ GAE       Run      Run
+  |         |        |
+VPC Conn    |        |
+  |         |        |
+Redis     Redis    Redis
+  |         |        |
+  |         |        |
+  ____________________
+  |    GCP Spanner   |
+  --------------------
+
+### Caveats
+1. No ActiveRecord support for Spanner. The existing library doesn't work with
+Ruby 2.5 or Rails 5.2.
+2. gRPC doesn't survive forking. Need to run a single process web server. Puma in non-cluster mode.
+3. OMG it's expensive.
+
+### Conclusions
+
+1. Google Cloud is now open for Rubyists!
+2. It's a playground of services. Lego blocks to snap together.
+2a.Examine your assumptions. On what is possible to build. And how hard(strikethrough) easy it is.
+
+### Calls to action.
+
+1. Sign up for the Ruby GAE beta
+2. Fork the repo
+3. Go forth and build cool stuff.

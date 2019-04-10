@@ -26,7 +26,7 @@ Create services
   6. Create on redis cluster in each region.
   7. Add REDIS-IP ENV var on each service based on the redis clusters created.
 
-
+0. Use CarrrierWave for images. It is very simple, doesn't rely to heavily on AR
 
 Things you may want to cover:
 
